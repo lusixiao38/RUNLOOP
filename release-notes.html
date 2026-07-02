@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+<meta charset="utf-8"/>
+<script>(function(e,t,n,s,o){e[s]=e[s]||[],e[s].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var a=t.getElementsByTagName(n)[0],i=t.createElement(n),r=s!="dataLayer"?"&l="+s:"";i.async=!0,i.src="https://www.googletagmanager.com/gtm.js?id="+o+r,a.parentNode.insertBefore(i,a)})(window,document,"script","dataLayer","GTM-N8476P6")</script>
+<title>Release Notes for Open 3D Engine - Open 3D Engine</title>
+<link href="static/css/style.css" rel="stylesheet"/>
+<link href="static/css/theme-style.min.css" rel="stylesheet"/>
+<link href="static/css/all.min.css" rel="stylesheet"/>
+<link href="/favicon.ico" rel="shortcut icon"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="RUNLOOP: Release Notes for Open 3D Engine" name="title"/>
+<meta content="Learn about the new features and improvements in each release of Open 3D Engine." name="description"/>
+<style>
+        :root {
+            --o3de-cyan: #0ac1c7;
+            --o3de-dark: #1a1a1a;
+            --o3de-light: #f8f9fa;
+            --o3de-gray: #6c757d;
+            --o3de-border: #e9ecef;
+            --o3de-orange: #ff6b35;
+            --o3de-bg-gray: #f0f0f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--o3de-dark);
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .version-tabs {
+            background-color: var(--o3de-bg-gray);
+            border-bottom: 1px solid var(--o3de-border);
+            padding: 12px 0;
+        }
+
+        .version-tabs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .version-tabs a {
+            display: inline-block;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: var(--o3de-dark);
+            font-size: 0.875rem;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .version-tabs a:hover {
+            background-color: #ffffff;
+        }
+
+        .version-tabs a.active {
+            background-color: #ffffff;
+            font-weight: 600;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .version-tabs span {
+            font-size: 0.75rem;
+            color: var(--o3de-gray);
+            margin-left: 8px;
+            font-weight: 500;
+        }
+
+        .breadcrumbs {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            font-size: 0.875rem;
+            color: var(--o3de-gray);
+            border-bottom: 1px solid var(--o3de-border);
+        }
+
+        .breadcrumbs a {
+            color: var(--o3de-cyan);
+            text-decoration: none;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: var(--o3de-gray);
+        }
+
+        .release-notes-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+            display: flex;
+            gap: 40px;
+        }
+
+        .main-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 24px;
+            align-self: flex-start;
+        }
+
+        .sidebar h3 {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--o3de-gray);
+            margin: 0 0 16px 0;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 6px 0;
+            color: var(--o3de-dark);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s ease;
+        }
+
+        .sidebar a:hover {
+            color: var(--o3de-cyan);
+        }
+
+        .sidebar ul ul {
+            padding-left: 16px;
+            margin-top: 4px;
+        }
+
+        .sidebar ul ul a {
+            color: var(--o3de-gray);
+            font-size: 0.8125rem;
+        }
+
+        .release-header {
+            margin-bottom: 40px;
+        }
+
+        .release-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--o3de-dark);
+            margin: 0 0 16px 0;
+            letter-spacing: -0.02em;
+        }
+
+        .version-section {
+            margin-bottom: 48px;
+        }
+
+        .version-section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--o3de-dark);
+            margin: 0 0 20px 0;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--o3de-cyan);
+        }
+
+        .version-section h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--o3de-dark);
+            margin: 30px 0 16px 0;
+        }
+
+        .version-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .version-info-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 16px;
+            background: var(--o3de-light);
+            border-radius: 4px;
+            border: 1px solid var(--o3de-border);
+        }
+
+        .version-info-item i {
+            margin-right: 8px;
+            color: var(--o3de-cyan);
+            font-size: 1rem;
+        }
+
+        .version-info-item span {
+            font-weight: 600;
+            color: var(--o3de-dark);
+            font-size: 0.875rem;
+        }
+
+        .version-info-item span:last-child {
+            font-weight: 400;
+            color: var(--o3de-gray);
+            margin-left: 8px;
+        }
+
+        .download-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+            font-size: 0.875rem;
+        }
+
+        .download-table th {
+            background: var(--o3de-dark);
+            color: #ffffff;
+            text-align: left;
+            padding: 12px 16px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .download-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--o3de-border);
+            vertical-align: middle;
+        }
+
+        .download-table tr:hover {
+            background-color: var(--o3de-light);
+        }
+
+        .download-table .download-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            background: var(--o3de-cyan);
+            color: #000000;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            transition: all 0.2s ease;
+        }
+
+        .download-table .download-link:hover {
+            background: #0bb6bc;
+        }
+
+        .download-table .download-link i {
+            margin-left: 6px;
+            font-size: 0.625rem;
+        }
+
+        .download-table .os-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            background: var(--o3de-dark);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.625rem;
+            border-radius: 2px;
+            margin-left: 8px;
+            text-transform: uppercase;
+        }
+
+        .older-versions {
+            padding: 24px;
+            background: var(--o3de-light);
+            border-radius: 8px;
+            border: 1px solid var(--o3de-border);
+        }
+
+        .older-versions h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--o3de-dark);
+            margin: 0 0 12px 0;
+        }
+
+        .older-versions p {
+            font-size: 0.875rem;
+            color: var(--o3de-gray);
+            margin: 0 0 16px 0;
+        }
+
+        .older-versions ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .older-versions li {
+            margin-bottom: 8px;
+        }
+
+        .older-versions a {
+            display: inline-flex;
+            align-items: center;
+            color: var(--o3de-cyan);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: color 0.2s ease;
+        }
+
+        .older-versions a:hover {
+            color: #0bb6bc;
+            text-decoration: underline;
+        }
+
+        .older-versions a i {
+            margin-right: 8px;
+            font-size: 0.75rem;
+        }
+
+        .release-links {
+            margin-top: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .release-links a {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background: var(--o3de-dark);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+
+        .release-links a:hover {
+            background: #2d2d2d;
+        }
+
+        .release-links a i {
+            margin-right: 8px;
+        }
+
+        .release-links a.secondary {
+            background: transparent;
+            color: var(--o3de-dark);
+            border: 1px solid var(--o3de-dark);
+        }
+
+        .release-links a.secondary:hover {
+            background: var(--o3de-dark);
+            color: #ffffff;
+        }
+
+        @media (max-width: 992px) {
+            .release-notes-container {
+                flex-direction: column;
+                padding: 24px 16px;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: static;
+                order: 2;
+            }
+
+            .main-content {
+                order: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .release-header h1 {
+                font-size: 1.75rem;
+            }
+
+            .version-tabs-container {
+                padding: 0 16px;
+            }
+
+            .breadcrumbs {
+                padding: 12px 16px;
+            }
+
+            .download-table {
+                font-size: 0.75rem;
+            }
+
+            .download-table th,
+            .download-table td {
+                padding: 10px 8px;
+            }
+
+            .download-table .download-link {
+                padding: 4px 8px;
+                font-size: 0.625rem;
+            }
+
+            .release-links {
+                flex-direction: column;
+            }
+
+            .release-links a {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .version-info {
+                flex-direction: column;
+            }
+
+            .version-info-item {
+                width: 100%;
+            }
+        }
+    </style>
+<style>
+.hs-recaptcha,
+.hs-recaptcha-field,
+.hs-form-field[data-recaptcha],
+iframe[src*="recaptcha"],
+iframe[src*="recaptcha.net"] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    opacity: 0 !important;
+}
+</style>
+</head>
+<body>
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-N8476P6" style="display:none !important;" width="0"></iframe></noscript>
+<div class="notifications-bar"><div class="container"><div>Help support RUNLOOP with the new donation option! <a href="donate.html">Donate Now!</a></div></div></div>
+<style>.notifications-bar { background-color: #E9FF3F; }.notifications-bar { color: #000000; }.notifications-bar a { color: #000000; }</style>
+<div class="version-tabs">
+<div class="version-tabs-container">
+<a class="active" href="#">26.05</a>
+<span>(latest)</span>
+<a href="#">development</a>
+<a href="#">25.10</a>
+<a href="#">25.05</a>
+<a href="#">24.09</a>
+<a href="#">23.10</a>
+</div>
+</div>
+<div class="breadcrumbs">
+<a href="docs.html">RUNLOOP Documentation</a>
+<span>/</span>
+<a href="release-notes.html">Release Notes</a>
+</div>
+<header>
+<div class="container d-flex flex-wrap align-items-center">
+<div class="site-logo">
+<a aria-current="page" class="custom-logo-link" href="index.html" rel="home"><img alt="RUNLOOP" class="custom-logo" decoding="async" src="static/picture/o3de_mascot_nav_logo_sm.svg"/></a>
+</div>
+<div class="top-nav">
+<ul class="menu-nav" id="menu-top-nav">
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a href="#">About</a>
+<ul class="sub-menu">
+<li class="label menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a href="#">MEET RUNLOOP</a>
+<ul class="sub-menu">
+<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="overview.html">Engine Overview</a> <small class="nav_desc">Get a high-level look of how RUNLOOP works, end-to-end.</small></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="features.html">Features</a> <small class="nav_desc">Explore RUNLOOP's comprehensive suite of features and tools.</small></li>
+<li class="menu-item menu-item-type-post_type_archive menu-item-object-gems"><a href="gems.html">Discovering Gems</a> <small class="nav_desc">Add functionality to your project through modular Gems.</small></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="overview.html#key-concept">Key Concepts</a> <small class="nav_desc">Add functionality to your project through modular Gems.</small></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="roadmap.html">Roadmap</a> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a href="#">Get Started</a>
+<ul class="sub-menu">
+<li class="label menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a href="#">START USING RUNLOOP</a>
+<ul class="sub-menu">
+<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="create.html">Take Your First Steps</a> <small class="nav_desc">Install, set up and create your first project. Learn about workflows, and take a tour of RUNLOOP's content creation tools.</small></li>
+</ul>
+</li>
+<li class="label menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a href="#">RESOURCES</a>
+<ul class="sub-menu">
+<li class="doc-icon menu-item menu-item-type-custom menu-item-object-custom"><a href="docs.html">Documentation</a> </li>
+<li class="book-icon menu-item menu-item-type-custom menu-item-object-custom"><a href="user-guide.html">User Guide</a> </li>
+<li class="cbook-icon menu-item menu-item-type-custom menu-item-object-custom"><a href="contributing.html">Contributors Guide</a> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a href="#">Resources</a>
+<ul class="sub-menu">
+<li class="label menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a href="#">USEFUL RESOURCES</a>
+<ul class="sub-menu">
+<li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="docs.html">Documentation</a> <small class="nav_desc">Dig into comprehensive documentation and use your expertise to help us make it better.</small></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="release-notes.html">Release Notes</a> <small class="nav_desc">Check out what's new in the latest RUNLOOP software release.</small></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="menu-button menu-item menu-item-type-custom menu-item-object-custom" style="display:none !important;"><a href="donate.html">Donate or Join</a> </li>
+</ul>
+<ul class="list-unstyled quick-access align-items-center mb-0 ms-auto d-flex flex-wrap">
+<li>
+<a class="btn fill" href="download.html" target="_self">Download <span class="icon-down-arrow"></span></a>
+</li>
+<li>
+<span class="text-uppercase">Connect</span>
+<a class="discord-social" href="https://discord.com/invite/o3de" style="display:none !important;" target="_black">
+<svg fill="none" height="28" viewbox="0 0 28 22" width="36" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.4325 1.81345C12.4953 1.49784 14.5573 1.50389 16.6166 1.81355C16.8382 1.3034 17.0651 0.813509 17.3345 0.333496C17.4566 0.355067 17.5785 0.375228 17.6998 0.398311C18.4482 0.540641 19.1875 0.720873 19.917 0.939711C20.4594 1.1024 20.9973 1.27961 21.5223 1.49139C21.9689 1.67152 22.4103 1.86415 22.8529 2.05396C22.8906 2.07009 22.9281 2.10124 22.9509 2.13531C23.3285 2.69979 23.6898 3.27486 24.0173 3.86958C24.2489 4.29032 24.4743 4.7149 24.6886 5.14461C25.074 5.91745 25.4083 6.71236 25.7015 7.52451C25.9708 8.27003 26.201 9.02695 26.3911 9.79605C26.5351 10.3788 26.6599 10.9655 26.7503 11.5589C26.8154 11.9856 26.8743 12.4135 26.9251 12.8421C26.9585 13.1245 26.9759 13.4089 26.9944 13.6929C27.0122 13.967 27.0234 14.2415 27.0354 14.5158C27.0422 14.6699 27.0322 14.8257 27.0531 14.9776C27.0743 15.1319 27.0704 15.2853 27.0678 15.4386C27.0637 15.669 27.0469 15.8992 27.0367 16.1296C27.0326 16.2201 27.0335 16.3108 27.0291 16.4013C27.0164 16.6589 27.0038 16.9165 26.9878 17.1739C26.9777 17.3375 26.9594 17.5007 26.9489 17.6642C26.9454 17.7192 26.9135 17.748 26.8744 17.7762C26.7189 17.8886 26.565 18.0034 26.408 18.1139C25.7548 18.5738 25.0808 19.0007 24.3834 19.3916C23.3145 19.9907 22.2032 20.4975 21.0479 20.908C20.7463 21.0152 20.4413 21.1124 20.1377 21.2139C20.1251 21.2182 20.1117 21.2203 20.0865 21.2263C19.5316 20.4722 19.0491 19.6714 18.6216 18.8219C19.42 18.5131 20.1878 18.1483 20.9287 17.6989C20.7399 17.549 20.5571 17.4039 20.3747 17.259C15.8124 19.3402 11.2516 19.3179 6.67426 17.2597C6.49967 17.3975 6.31363 17.5444 6.11846 17.6984C6.85423 18.144 7.61715 18.5088 8.4199 18.8186C8.0013 19.6669 7.51237 20.4598 6.9583 21.2248C6.89527 21.2066 6.83112 21.1898 6.76799 21.1696C5.89736 20.8909 5.04567 20.5636 4.21567 20.1814C3.26224 19.7425 2.34205 19.2423 1.46554 18.6657C1.03508 18.3826 0.616383 18.082 0.1914 17.7906C0.128575 17.7475 0.0998984 17.6985 0.0961491 17.6174C0.0808481 17.2897 0.0536914 16.9626 0.0333238 16.6351C0.0236973 16.4813 0.0153882 16.3272 0.0134629 16.1732C0.00707903 15.6562 -0.00345941 15.1391 0.00201248 14.6222C0.00535641 14.3079 0.0326145 13.9936 0.05359 13.6797C0.0714243 13.4126 0.0880426 13.145 0.118949 12.879C0.168398 12.4535 0.215821 12.027 0.288577 11.605C0.380788 11.0704 0.482727 10.5365 0.607871 10.0087C0.732306 9.48387 0.881567 8.96415 1.0367 8.44724C1.22386 7.82349 1.44902 7.21213 1.70154 6.61166C1.86671 6.21884 2.04161 5.82995 2.21944 5.44258C2.52242 4.78284 2.8632 4.14205 3.23336 3.51759C3.50402 3.06106 3.79159 2.61441 4.06985 2.16222C4.10532 2.10466 4.15325 2.06948 4.21323 2.04197C4.8198 1.76396 5.43671 1.51135 6.06547 1.28717C6.79262 1.02791 7.53061 0.803328 8.28279 0.62854C8.72865 0.524916 9.17887 0.440244 9.62756 0.348717C9.70994 0.331883 9.71025 0.335915 9.75037 0.409197C9.99701 0.86028 10.222 1.32205 10.4325 1.81345ZM20.4497 11.8001C20.4559 11.3021 20.3472 10.8333 20.114 10.3942C19.8389 9.87609 19.4443 9.48035 18.902 9.24125C18.483 9.05648 18.0463 9.01112 17.5964 9.09791C17.0908 9.19548 16.6722 9.4495 16.3313 9.82599C15.8389 10.3698 15.6098 11.021 15.587 11.7459C15.5817 11.9157 15.5964 12.088 15.6205 12.2564C15.7199 12.9524 16.0176 13.5497 16.5541 14.0143C17.0064 14.4061 17.5321 14.6054 18.1406 14.5722C18.4353 14.5562 18.713 14.4853 18.9761 14.3574C19.4891 14.108 19.86 13.7147 20.1187 13.2144C20.348 12.7709 20.4546 12.2969 20.4497 11.8001ZM6.59685 11.9271C6.593 12.07 6.62512 12.3156 6.68673 12.557C6.84501 13.1777 7.1569 13.7035 7.66923 14.1003C8.15137 14.4738 8.69856 14.6379 9.30644 14.5604C9.90166 14.4846 10.3863 14.1968 10.7728 13.7453C11.2235 13.2188 11.4303 12.5982 11.4625 11.9154C11.4754 11.6398 11.4516 11.365 11.3851 11.097C11.1816 10.2755 10.7355 9.63709 9.95445 9.26141C9.53089 9.05769 9.0828 9.00719 8.62306 9.09478C7.98691 9.21585 7.4993 9.56835 7.13177 10.0883C6.76546 10.6063 6.59847 11.1886 6.59685 11.9271Z" fill="white"></path>
+</svg>
+</a>
+<a class="github-social" href="https://github.com/o3de/o3de/discussions" style="display:none !important;" target="_black">
+<svg fill="none" height="30" viewbox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg">
+<path d="M23.7841 12.1749C23.7841 9.0372 22.5312 6.028 20.3008 3.80924C18.0705 1.59049 15.0456 0.34392 11.8913 0.34375C8.7374 0.344259 5.71283 1.591 3.4829 3.80973C1.25297 6.02847 0.000317682 9.03748 0.000488299 12.1749C0.000713927 14.6383 0.773552 17.0403 2.21129 19.0461C3.64904 21.0518 5.68002 22.5614 8.02118 23.3643C8.1883 23.279 8.33163 23.1539 8.43845 23.0002C8.54528 22.8465 8.6123 22.6689 8.63353 22.4833C8.63353 21.8325 8.61935 20.1587 8.61935 20.1587C8.20455 20.2196 7.78568 20.2489 7.3664 20.2464C6.77342 20.2832 6.18483 20.1239 5.69237 19.7933C5.1999 19.4626 4.83123 18.9792 4.64375 18.4184C4.38518 17.761 3.91552 17.207 3.30781 16.8425C3.00036 16.6454 2.92962 16.4132 3.28531 16.3466C4.92869 16.0408 5.3487 18.19 6.446 18.5329C7.20494 18.7681 8.02581 18.703 8.73772 18.3512C8.83856 17.7399 9.1773 17.1926 9.68065 16.8278C6.8898 16.5622 5.23483 15.6031 4.3768 14.0618L4.28482 13.889L4.06937 13.3995L4.00502 13.2242C3.72979 12.3581 3.59944 11.4528 3.61912 10.5446C3.59262 9.91958 3.69535 9.29579 3.92093 8.71183C4.14652 8.12788 4.49016 7.59619 4.93061 7.14966C4.57077 6.02668 4.64437 4.81062 5.13706 3.7387C5.13706 3.7387 6.34501 3.49109 8.62901 5.10859C9.86653 4.58393 13.1668 4.54042 14.7285 4.99214C15.6862 4.3651 17.4396 3.47637 18.1465 3.72527C18.3394 4.03047 18.7504 4.9192 18.3966 6.87261C19.3957 7.93193 19.9324 9.34163 19.8895 10.7935C19.8868 11.6133 19.7842 12.4297 19.584 13.2249L19.4811 13.5723C19.4811 13.5723 19.4219 13.7361 19.3582 13.8922L19.283 14.065C18.4552 15.8642 16.7565 16.536 14.0088 16.8163C14.8983 17.3703 15.153 18.0652 15.153 19.9457C15.153 21.8261 15.1279 22.0782 15.1337 22.5108C15.1595 22.69 15.226 22.861 15.3281 23.0109C15.4301 23.1607 15.5651 23.2855 15.7229 23.3758C18.0735 22.579 20.1146 21.0707 21.5602 19.062C23.0058 17.0534 23.7834 14.6452 23.7841 12.1749Z" fill="white"></path>
+</svg>
+</a>
+</li>
+<li class="search">
+<svg class="search-open" fill="none" height="27" viewbox="0 0 29 27" width="29" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.945">
+<path d="M11.4261 20.0353C16.4681 20.0353 20.5554 15.999 20.5554 11.0201C20.5554 6.04112 16.4681 2.00488 11.4261 2.00488C6.38419 2.00488 2.29688 6.04112 2.29688 11.0201C2.29688 15.999 6.38419 20.0353 11.4261 20.0353Z" stroke="black" stroke-width="4"></path>
+<path d="M17.9521 15.9648L27.1018 25.0001" stroke="black" stroke-width="4"></path>
+</g>
+</svg>
+<div class="global-search">
+<div class="form-container d-flex align-items-center">
+<div class="container">
+<div class="row">
+<div class="col-12 d-flex align-items-center">
+<form action="https://o3de.org/" class="search-form position-relative ms-auto" method="get" role="search">
+<div class="field-wrapper w-100">
+<input class="search-field" id="search-form-1" name="s" placeholder="I'm looking for..." type="search" value=""/>
+</div>
+<div class="button position-relative">
+<input class="search-submit btn" type="submit" value="Search"/>
+</div>
+</form>
+<button class="search-close">
+<svg fill="none" height="23" viewbox="0 0 24 23" width="24" xmlns="http://www.w3.org/2000/svg">
+<line stroke="white" stroke-width="4" x1="22.4689" x2="3.01379" y1="1.68667" y2="21.1418"></line>
+<line stroke="white" stroke-width="4" x1="21.5858" x2="2.13068" y1="21.1418" y2="1.68664"></line>
+</svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="hamburger">
+<span></span>
+</div>
+</div>
+</header>
+<div class="release-notes-container">
+<aside class="sidebar">
+<h3>In This Article</h3>
+<ul>
+<li>
+<a href="#current-version">Current version of Open 3D Engine</a>
+<ul>
+<li><a href="#download-latest">Download the latest version</a></li>
+</ul>
+</li>
+<li><a href="#older-versions">Older versions</a></li>
+</ul>
+</aside>
+<main class="main-content">
+<header class="release-header">
+<h1>Release Notes for Open 3D Engine</h1>
+</header>
+<section class="version-section" id="current-version">
+<h2>Current version of Open 3D Engine</h2>
+<div class="version-info">
+<div class="version-info-item">
+<i class="fas fa-tag"></i>
+<span>Latest Version:</span>
+<span>26.05.0</span>
+</div>
+<div class="version-info-item">
+<i class="fas fa-calendar"></i>
+<span>Release Date:</span>
+<span>May 27, 2026</span>
+</div>
+</div>
+<div class="release-links">
+<a href="2605-0-release-notes.html" style="display:none !important;">
+<i class="fas fa-file-alt"></i>
+                        RUNLOOP 26.05.0 Release Notes
+                    </a>
+<a class="secondary" href="overview.html">
+<i class="fas fa-info-circle"></i>
+                        Learn More About RUNLOOP
+                    </a>
+</div>
+<h3 id="download-latest">Download the latest version</h3>
+<table class="download-table">
+<thead>
+<tr>
+<th>Version</th>
+<th>Binary Download Link</th>
+<th>Date of Release</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+                                26.05.0
+                                <span class="os-badge">Windows</span>
+</td>
+<td>
+<a class="download-link" href="https://o3debinaries.org/download/windows.html" style="display:none !important;" target="_blank">
+                                    Download
+                                    <i class="fas fa-external-link-alt"></i>
+</a>
+</td>
+<td>May 27, 2026</td>
+</tr>
+<tr>
+<td>
+                                26.05.0
+                                <span class="os-badge">Linux</span>
+</td>
+<td>
+<a class="download-link" href="https://o3debinaries.org/download/linux.html" style="display:none !important;" target="_blank">
+                                    Download
+                                    <i class="fas fa-external-link-alt"></i>
+</a>
+</td>
+<td>May 27, 2026</td>
+</tr>
+<tr>
+<td>
+                                26.05.0
+                                <span class="os-badge">Source</span>
+</td>
+<td>
+<a class="download-link" href="https://github.com/o3de/o3de/tree/main" style="display:none !important;" target="_blank">
+                                    GitHub Repository
+                                    <i class="fas fa-external-link-alt"></i>
+</a>
+</td>
+<td>May 27, 2026</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="older-versions" id="older-versions">
+<h2>Older versions</h2>
+<p>For older versions of RUNLOOP:</p>
+<ul>
+<li>
+<a href="https://github.com/o3de/o3de/releases" style="display:none !important;" target="_blank">
+<i class="fas fa-code-branch"></i>
+                            Source code
+                        </a>
+</li>
+<li>
+<a href="archive.html" style="display:none !important;">
+<i class="fas fa-archive"></i>
+                            Release notes archive
+                        </a>
+</li>
+</ul>
+</section>
+</main>
+</div>
+<footer class="footer text-white footer-black">
+<div class="container pt-3 pb-5">
+<div class="row">
+<div class="col-12">
+<hr/>
+</div>
+</div>
+<div class="row">
+<div class="col col-12 col-lg-8">
+<div class="footer-links-wrapper row">
+<div class="col">
+<h5>Get Started</h5>
+<a href="overview.html">About RUNLOOP</a>
+<a href="features.html">Features</a>
+<a href="download.html">Support Platforms</a>
+<a href="create.html">Project Creation</a>
+</div>
+<div class="col">
+<h5>Community</h5>
+<a href="showcase.html">Showcase</a>
+<a href="news-blogs.html">News &amp; Blogs</a>
+<a href="calendar.html" target="_blank">Meetings Calender</a>
+</div>
+<div class="col">
+<h5>Support</h5>
+<a href="https://discord.com/invite/o3de" style="display:none !important;">Discord</a>
+<a href="https://github.com/o3de/o3de/discussions" style="display:none !important;">Forums</a>
+<a href="#">FAQs</a>
+</div>
+<div class="col">
+<h5>Resources</h5>
+<a href="docs.html">Documentation</a>
+<a href="release-notes.html">Release Notes</a>
+<a href="api.html">API Reference</a>
+</div>
+</div>
+</div>
+<div class="col col-12 col-lg-4">
+<div class="bottom-text">
+<p>Copyright © 2026 Open 3D Engine Contributors</p>
+<p>Documentation Distributed under <a href="https://creativecommons.org/licenses/by/4.0/" style="display:none !important;">CC BY 4.0</a>.</p>
+<div class="footer-links">
+<a href="https://lfprojects.org/policies/trademark-policy" style="display:none !important;">Trademark Policy</a>
+<a href="https://lfprojects.org/policies/privacy-policy/" style="display:none !important;">Privacy Policy</a>
+<a href="https://lfprojects.org/policies/antitrust-policy/" style="display:none !important;">Antitrust Policy</a>
+<a href="https://lfprojects.org/policies/code-of-conduct/" style="display:none !important;">Code of Conduct</a>
+<a href="https://lfprojects.org/policies/terms-of-use/" style="display:none !important;">Terms of Use</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/jquery-migrate.min.js"></script>
+</body>
+</html>

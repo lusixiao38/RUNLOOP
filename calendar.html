@@ -1,0 +1,1743 @@
+﻿
+	
+	<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="#2f6fa7" name="theme-color"/>
+<meta content="nopin" name="pinterest"/>
+<meta content="nohover" name="pinterest"/>
+<meta content="0f56257c3db4a222e91b11bc6871c4df2e263b28" name="3778517eb4810dfb5d143ed8f1b359b3b5a82923"/>
+<link href="/orgimg/org.161/favicons/apple-icon-57x57.png?v=1680450447078322526" rel="apple-touch-icon" sizes="57x57"/>
+<link href="/orgimg/org.161/favicons/apple-icon-60x60.png?v=1680450447078322526" rel="apple-touch-icon" sizes="60x60"/>
+<link href="/orgimg/org.161/favicons/apple-icon-72x72.png?v=1680450447078322526" rel="apple-touch-icon" sizes="72x72"/>
+<link href="/orgimg/org.161/favicons/apple-icon-76x76.png?v=1680450447078322526" rel="apple-touch-icon" sizes="76x76"/>
+<link href="/orgimg/org.161/favicons/apple-icon-114x114.png?v=1680450447078322526" rel="apple-touch-icon" sizes="114x114"/>
+<link href="/orgimg/org.161/favicons/apple-icon-120x120.png?v=1680450447078322526" rel="apple-touch-icon" sizes="120x120"/>
+<link href="/orgimg/org.161/favicons/apple-icon-144x144.png?v=1680450447078322526" rel="apple-touch-icon" sizes="144x144"/>
+<link href="/orgimg/org.161/favicons/apple-icon-152x152.png?v=1680450447078322526" rel="apple-touch-icon" sizes="152x152"/>
+<link href="/orgimg/org.161/favicons/apple-icon-180x180.png?v=1680450447078322526" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/orgimg/org.161/favicons/android-icon-192x192.png?v=1680450447078322526" rel="icon" sizes="192x192" type="image/png"/>
+<link href="/orgimg/org.161/favicons/favicon-32x32.png?v=1680450447078322526" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/orgimg/org.161/favicons/favicon-96x96.png?v=1680450447078322526" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/orgimg/org.161/favicons/favicon-16x16.png?v=1680450447078322526" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/orgimg/org.161/favicons/manifest.json?v=1680450447078322526" rel="manifest"/>
+<meta content="#ffffff" name="msapplication-TileColor"/>
+<meta content="/ms-icon-144x144.png" name="msapplication-TileImage"/>
+<script>
+/* stubs */
+	const hapticsImpactHeavy = async () => {
+	};
+	const hapticsImpactMedium = async () => {
+	};
+	const hapticsImpactLight = async () => {
+	};
+	const hapticsVibrate = async () => {
+	};
+	const hapticsSelectionStart = async () => {
+	};
+	const hapticsSelectionChanged = async () => {
+	};
+	const hapticsSelectionEnd = async () => {
+	};
+</script>
+<script>
+	
+		function setPullToRefresh() {}
+	
+	function gotoURL(inurl) {
+		window.location.href = inurl;
+		return;
+	}
+	function contentLoaded(isHTMX, f, caller = "") {
+		console.log("contentLoaded: " + isHTMX + " " + caller);
+		if (isHTMX == true) {
+			document.body.addEventListener('htmx:afterSettle', f, {once: true});
+		} else {
+			if (document.readyState !== 'loading') {
+				console.log('document is already ready, just execute code here');
+				f();
+			} else {
+				console.log('document was not ready, place code here');
+				document.addEventListener('DOMContentLoaded', f, {once: true});
+			}
+		}
+	}
+
+	function HideAppSidebarOnKeyboard() {
+		console.log("In HideAppSidebarOnKeyboard");
+		
+	}
+	// stub
+	function logError(data, url, linenumber) {
+		console.log(data)
+		return;
+	}
+	var pushSubToken;
+	var ignoreErrors = false;
+	var lastError = "";
+
+	// Auto-hide the fixed app top navbar on reading-heavy pages. The
+	// navbar tracks scroll delta 1:1 in both directions: scrolling down
+	// slides it off at the same pixel rate as the page; scrolling up —
+	// even one pixel — starts bringing it back at the same rate. When
+	// the user is at the very top, it's always fully visible. Opt-in
+	// per page; xs only. Bottom tab bar is untouched.
+	function EnableTopbarAutoHide() {
+		if (document.documentElement.clientWidth > 767) return;
+		var body = document.body;
+		body.classList.add('auto-hide-topbar');
+		// Measure the actual headerbar height so notched devices (iOS)
+		// hide the full bar including the safe-area-inset-top padding,
+		// not just the 50px content row. Fall back to 50 if the
+		// element isn't found for any reason.
+		var headerEl = document.getElementById('headerbar');
+		var navHeight = headerEl ? headerEl.offsetHeight : 50;
+		var offset = 0;
+		var lastY = window.scrollY;
+		function onScroll() {
+			var y = window.scrollY;
+			var dy = y - lastY;
+			lastY = y;
+			if (y <= 0) {
+				offset = 0;
+			} else {
+				offset -= dy;
+				if (offset > 0) offset = 0;
+				if (offset < -navHeight) offset = -navHeight;
+			}
+			body.style.setProperty('--topbar-offset', offset + 'px');
+		}
+		window.addEventListener('scroll', onScroll, { passive: true });
+		gioDestroy(function() {
+			window.removeEventListener('scroll', onScroll);
+			body.classList.remove('auto-hide-topbar');
+			body.style.removeProperty('--topbar-offset');
+		});
+	}
+	
+		window.onerror = function(errorMessage, errorUrl, errorLine, errorColumn, errorObj) {
+			let column;
+			let stack;
+			if (console && console.log) {
+				console.log("msg:", errorMessage);
+				console.log("url:", errorUrl);
+				console.log("line:", errorLine);
+				if (errorColumn !== undefined && errorObj != null) {
+					console.log("column:", errorColumn);
+					column = errorColumn;
+				}
+				if (errorObj !== undefined && errorObj != null) {
+					console.log("stack:", errorObj.stack);
+					stack = errorObj.stack;
+				}
+				console.log("client_id:", "web.app01-g2.39180323.1782708702392958126");
+				console.log("last_error:", lastError);
+				console.log("stack:", stack);
+			}
+			if (errorUrl == "" || errorUrl === null) {
+				errorUrl = window.location.href;
+			}
+			if (errorMessage.includes("SecurityError:") == true) {
+				ignoreErrors = true;
+			}
+			if (ignoreErrors == true) {
+				console.log("cookies, disabled, ignoring");
+				lastError = errorMessage;
+				return;
+			}
+			var ignoreMessages = ["ResizeObserver loop limit exceeded",
+				"TypeError: can't redefine non-configurable property \"userAgent\"",
+				"TypeError: can't redefine non-configurable property \"getChannelData\"",
+				"ReferenceError: tinymce is not defined",
+				"Uncaught ReferenceError: timeoutId is not defined",
+				"ReferenceError: Can't find variable: tinymce"];
+			for (var i = 0; i < ignoreMessages.length; i++) {
+				if (errorMessage === ignoreMessages[i]) {
+					lastError = errorMessage;
+					return;
+				}
+			}
+			if (errorUrl.indexOf("safari-extension:") === 0 || errorUrl.indexOf("moz-extension:") === 0 || errorUrl.indexOf("chrome-extension:") === 0) {
+				lastError = errorMessage;
+				return;
+			}
+			if (errorUrl.indexOf("googletagmanager.com") !== -1 || errorUrl.indexOf("socialsearch.com") !== -1) {
+				lastError = errorMessage;
+				return;
+			}
+			if (errorLine === 0 || errorLine === 1) {
+				lastError = errorMessage;
+				return;
+			}
+			jQuery.ajax({
+				type: 'POST',
+				url: '/jsclienterror',
+				data: {
+					msg: errorMessage,
+					url: errorUrl,
+					line: errorLine,
+					column: column,
+					stack: stack,
+					last_error: lastError,
+					client_id: "web.app01-g2.39180323.1782708702392958126"
+				},
+				success: function() {
+					if (console && console.log) {
+						console.log('JS error report successful.');
+					}
+					lastError = errorMessage;
+				},
+				error: function() {
+					if (console && console.error) {
+						console.error('JS error report submission failed!');
+					}
+					lastError = errorMessage;
+				}
+			});
+			return true;
+		}
+	
+</script>
+<script src="static/js/tinymce.min.js"></script>
+<script src="static/js/browser-image-compression-2.0.2.min.js"></script>
+<link href="static/css/application-0f8175f2b2e1dd8489be75dd28b3455c.css" id="groupsio-css" rel="stylesheet"/>
+<script id="groupsio-js" src="static/js/application-29b5bce21a876e9bab9c2d4773df5b7d.js"></script>
+<script src="static/js/run_prettify.js"></script>
+<title>RUNLOOP-calendar@lists.RUNLOOP.org | Calendar</title>
+<link href="static/css/cookieconsent-3.1.0.min.css" rel="stylesheet" type="text/css"/>
+<script src="static/js/cookieconsent-3.1.0.min.js"></script>
+<script>
+  window.addEventListener("load", function(){
+  window.cookieconsent.initialise({
+    "palette": {
+      "popup": {
+        "background": "#d9edf7",
+        "text": "#31708f"
+      },
+      "button": {
+        "background": "#56cbdb",
+        "text": "#ffffff"
+      }
+    },
+    "cookie": {
+        "domain": ".{{.Org.Domain}}"
+    },
+    "content": {
+      "message": "Our site uses cookies so that we can remember you and understand how you and other visitors use our site, to improve your browsing experience and help us improve our site. By continuing to use our website, you agree to our use of such cookies.",
+      "dismiss": "I Agree",
+      "href": "https://groups.io/static/cookie_policy"
+    }
+  })});
+</script>
+<script>
+	htmx.config.scrollBehavior = "instant";
+	htmx.config.historyCacheSize = 0;
+	htmx.config.defaultSettleDelay = 0;
+	console.log("FULL PAGE LOAD");
+
+	// Short fade-in on #maincontent-refresh after every HTMX swap — adds zero latency
+	// because it runs AFTER the new content has arrived. We listen to afterRequest
+	// (fires once per HTMX request) rather than afterSwap (fires once per swapped
+	// element, including every hx-swap-oob badge — which would cancel the animation).
+	// Listen on document because this script runs in <head> before <body> exists.
+	document.addEventListener('htmx:afterRequest', function(evt) {
+		if (!evt.detail || !evt.detail.successful) return;
+		var refresh = document.getElementById('maincontent-refresh');
+		if (!refresh) return;
+		refresh.classList.remove('gio-fade-in');
+		// force reflow so removing then adding re-starts the animation each time
+		void refresh.offsetWidth;
+		refresh.classList.add('gio-fade-in');
+	});
+
+	// Top-of-viewport progress bar shown while an HTMX request is in flight.
+	// Provides immediate visual feedback for taps even before content arrives.
+	document.addEventListener('htmx:beforeRequest', function() {
+		var bar = document.getElementById('gio-progress-bar');
+		if (bar) bar.classList.add('active');
+	});
+	document.addEventListener('htmx:afterRequest', function() {
+		var bar = document.getElementById('gio-progress-bar');
+		if (bar) bar.classList.remove('active');
+	});
+
+	// Haptic feedback on mobile-native chrome taps: bottom-nav tabs, back
+	// chevron, and the navbar overflow action slot. Uses the shared helpers
+	// from qtutils/appfunctions.qtpl — they no-op on non-Capacitor runtimes,
+	// so this is safe on the plain web too.
+	document.addEventListener('click', function(ev) {
+		if (typeof hapticsSelectionChanged !== 'function') return;
+		var target = ev.target;
+		if (!target || !target.closest) return;
+		if (target.closest('.mobilesidebar-item') ||
+			target.closest('#logo a') ||
+			target.closest('#header-action-slot a')) {
+			hapticsSelectionChanged();
+		}
+	}, true);
+</script>
+<style>
+.hs-recaptcha,
+.hs-recaptcha-field,
+.hs-form-field[data-recaptcha],
+iframe[src*="recaptcha"],
+iframe[src*="recaptcha.net"] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    opacity: 0 !important;
+}
+</style>
+</head>
+<body class="" hx-boost="false" hx-ext="preload" hx-headers='{"Accept-Version": "bdb35ec592b280c44120cf5de826c7c36b297515"}' id="body">
+<div aria-hidden="true" id="gio-progress-bar"></div>
+<script>
+					if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+						document.body.classList.add('dark-mode');
+					}
+				</script>
+<div class="navbar navbar-head navbar-fixed-top" id="headerbar" role="navigation">
+<div class="container-fluid" style="padding-left:0px;">
+<a class="navbar-left" href="https://lists.RUNLOOP.org" hx-boost="false" hx-disinherit="*" style="display:none !important;">
+<img alt="Groups.io" height="50" src="static/picture/mainlogo.png"/>
+</a>
+<ul class="nav navbar-nav pull-right visible-xs" style="margin-top:5px;margin-bottom:5px;">
+<li>
+<a data-target="#mobileAccount" data-toggle="modal" href="#">
+<i class="fa-fw fa fa-bars fa-lg"></i>
+</a>
+</li>
+</ul>
+<ul class="nav navbar-nav pull-right hidden-xs">
+<li class="dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="#">
+<i class="fa-fw fa-regular fa-globe"></i>
+										
+											English
+										
+										<b class="caret"></b>
+</a>
+<ul class="dropdown-menu">
+<li>
+<a href="https://lists.RUNLOOP.org/setlang/ar" style="display:none !important;">
+												العربية
+											</a>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/setlang/de" style="display:none !important;">
+												Deutsch
+											</a>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/unsetlang" style="display:none !important;">
+												English
+											</a>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/setlang/es" style="display:none !important;">
+												Español
+											</a>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/setlang/fr" style="display:none !important;">
+												Français
+											</a>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/setlang/it" style="display:none !important;">
+												Italiano
+											</a>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/setlang/nl" style="display:none !important;">
+												Nederlands
+											</a>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/setlang/pt-br" style="display:none !important;">
+												Português do Brasil
+											</a>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/setlang/pt" style="display:none !important;">
+												Português
+											</a>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/setlang/uk" style="display:none !important;">
+												Українська
+											</a>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/setlang/zh-hans" style="display:none !important;">
+												简体中文
+											</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/helpcenter" style="display:none !important;" target="_blank">
+										Help
+									</a>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/login" hx-boost="false" hx-disinherit="*" id="login" style="display:none !important;">
+<i class="fa fa-sign-in-alt"></i>
+										Log In
+									</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="modal fade" id="mobileAccount" role="dialog">
+<div class="modal-dialog" style="margin-top:50px;">
+<div class="modal-content">
+<div class="modal-body">
+<ul class="list-group noborderlist">
+<li class="noborderitem list-group-item">
+<a href="https://lists.RUNLOOP.org/login" hx-boost="false" hx-disinherit="*" style="display:none !important;">
+<i class="fa fa-sign-in-alt"></i>
+												Log In
+											</a>
+</li>
+<li class="noborderitem list-group-item">
+<a href="https://lists.RUNLOOP.org/helpcenter" style="display:none !important;" target="_blank">
+<i class="fa-fw fa fa-question-circle"></i>
+												Help
+											</a>
+</li>
+<li class="dropdown noborderitem list-group-item">
+<a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="#">
+<i class="fa-fw fa-regular fa-globe"></i>
+												
+													English
+												
+												<b class="caret"></b>
+</a>
+<ul class="dropdown-menu">
+<li>
+<a href="https://lists.RUNLOOP.org/setlang/ar" style="display:none !important;">
+														العربية
+													</a>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/setlang/de" style="display:none !important;">
+														Deutsch
+													</a>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/unsetlang" style="display:none !important;">
+														English
+													</a>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/setlang/es" style="display:none !important;">
+														Español
+													</a>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/setlang/fr" style="display:none !important;">
+														Français
+													</a>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/setlang/it" style="display:none !important;">
+														Italiano
+													</a>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/setlang/nl" style="display:none !important;">
+														Nederlands
+													</a>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/setlang/pt-br" style="display:none !important;">
+														Português do Brasil
+													</a>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/setlang/pt" style="display:none !important;">
+														Português
+													</a>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/setlang/uk" style="display:none !important;">
+														Українська
+													</a>
+</li>
+<li>
+<a href="https://lists.RUNLOOP.org/setlang/zh-hans" style="display:none !important;">
+														简体中文
+													</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<script>
+var groupnavigatorData = [
+
+];
+</script>
+<!-- Modal Dialog for Autocomplete -->
+<div aria-hidden="true" aria-labelledby="modalLabel" class="modal fade" id="groupnavigatorModal" role="dialog" tabindex="-1">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-body">
+<input class="form-control" id="groupnavigatorInput" placeholder="Go to group..." style="margin-bottom:10px" type="text"/>
+<div class="autocompleteResults" id="groupnavigatorContainer" style="max-height:250px; overflow-y: auto;"></div>
+<div class="text-center" style="margin-top:10px; font-size:12px;"><i class="fa-sharp fa-arrow-up-arrow-down"></i> to navigate   <i class="fa-sharp fa-arrow-turn-down-left"></i> to use   <strong>esc</strong> to dismiss</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+// Keep track of the currently selected index
+var selectedIndex = -1;
+
+// Function to highlight the matched substring
+function highlightSubstring(str, substring) {
+  var index = str.toLowerCase().indexOf(substring.toLowerCase());
+  if (index !== -1) {
+    var before = str.substring(0, index);
+    var middle = str.substring(index, index + substring.length);
+    var after = str.substring(index + substring.length);
+    return before + '<span class="autocomplete-highlight">' + middle + '</span>' + after;
+  }
+  return str;
+}
+
+// Function to highlight the selected item and ensure it is visible in the scrollable list
+function highlightSelectedItem(modalName) {
+  var listContainer = document.getElementById(modalName + 'Container');
+  var items = document.getElementsByClassName(modalName + '-list-item');
+  Array.from(items).forEach(function(item, idx) {
+    item.className = idx === selectedIndex ? modalName + '-list-item autocomplete-list-item btn-primary no-hover' : modalName + '-list-item autocomplete-list-item no-hover'; // Apply btn-primary class to the selected item
+  });
+  if (items.length > 0 && selectedIndex >= 0) {
+    var selectedItem = items[selectedIndex];
+    var containerTop = listContainer.scrollTop;
+    var containerBottom = containerTop + listContainer.clientHeight;
+    var itemTop = selectedItem.offsetTop;
+    var itemBottom = itemTop + selectedItem.offsetHeight;
+	const fudge = 59;
+    if (selectedIndex > 0 && itemTop > containerBottom) {
+      // If there are items below the selected item and the selected item is not fully visible, scroll down
+      listContainer.scrollTop = itemTop - listContainer.clientHeight + items[selectedIndex - 1].offsetHeight;
+    } else if (selectedIndex < items.length - 1 && (itemTop - fudge) < containerTop) {
+      // If there are items above the selected item and the selected item is not fully visible, scroll up
+      listContainer.scrollTop = itemTop - fudge - items[selectedIndex + 1].offsetHeight;
+    }
+  }
+}
+
+// function to populate the list based on the input
+function populateList(modalName, data) {
+  var input = document.getElementById(modalName+'Input').value;
+  var listContainer = document.getElementById(modalName+'Container');
+  listContainer.innerHTML = '';
+  data.forEach(function(item) {
+    if (item.name.toLowerCase().includes(input.toLowerCase())) {
+      var div = document.createElement('div');
+      div.innerHTML = highlightSubstring(item.name, input);
+      div.className = modalName+'-list-item autocomplete-list-item no-hover'; // Apply no-hover class
+      div.addEventListener('click', function() {
+        // Navigate to the specified URL when a list item is clicked
+        window.location.href = item.url;
+      });
+      div.addEventListener('mousemove', function() {
+        // Remove no-hover class from all items when the mouse is moved over any item
+		console.log("mouse move");
+        var items = document.getElementsByClassName(modalName+'-list-item');
+        Array.from(items).forEach(function(item) {
+          item.classList.remove('no-hover');
+        });
+      });
+      listContainer.appendChild(div);
+    }
+  });
+  highlightSelectedItem(modalName);
+}
+
+function InitAutocomplete(modalName, data) {
+	// Focus the input field when the modal is shown and populate the list
+	$('#' + modalName + 'Modal').on('shown.bs.modal', function () {
+		$('#' + modalName + 'Input').focus().val('');
+		populateList(modalName, data);
+		selectedIndex = 0;
+		highlightSelectedItem(modalName);
+	});
+
+	// Event listener for input field typing
+	document.getElementById(modalName + 'Input').addEventListener('input', function() {
+		populateList(modalName, data);
+		selectedIndex = 0;
+	});
+
+	// Event listener for arrow keys and enter key
+	document.getElementById(modalName + 'Input').addEventListener('keydown', function(event) {
+		var items = document.getElementsByClassName(modalName + '-list-item');
+		if (event.key === 'ArrowDown') {
+			event.preventDefault();
+			if (selectedIndex < items.length - 1) selectedIndex++;
+			highlightSelectedItem(modalName);
+		} else if (event.key === 'ArrowUp') {
+			event.preventDefault();
+			if (selectedIndex > 0) selectedIndex--;
+			highlightSelectedItem(modalName);
+		} else if (event.key === 'Enter' && selectedIndex >= 0 && selectedIndex < items.length) {
+			event.preventDefault();
+			items[selectedIndex].click();
+		}
+	});
+}
+
+function showAutocompleteModal(modalName) {
+	$('#' + modalName + 'Modal').modal('show');
+	selectedIndex = -1;
+}
+</script>
+<div class="container-fluid" id="content">
+<script>
+	InitAutocomplete("groupnavigator", groupnavigatorData);
+
+	document.body.addEventListener("showReloadPageDialog", function(evt) {
+		console.log("Forced reload");
+		location.reload();
+	});
+
+	// ShowHeaderAction adds an icon button (e.g. settings cog) to the mobile navbar,
+	// to the left of the profile icon. modalTarget is optional — if given, clicking
+	// opens that Bootstrap modal. ariaLabel is for accessibility.
+	function ShowHeaderAction(iconClass, modalTarget, ariaLabel) {
+		var slot = document.getElementById("header-action-slot");
+		if (!slot) {
+			return;
+		}
+		slot.innerHTML = '';
+		var a = document.createElement('a');
+		a.href = '#';
+		a.className = 'navbar-action-xs';
+		if (ariaLabel) {
+			a.setAttribute('aria-label', ariaLabel);
+		}
+		if (modalTarget) {
+			a.setAttribute('data-toggle', 'modal');
+			a.setAttribute('data-target', modalTarget);
+		}
+		var icon = document.createElement('i');
+		icon.className = iconClass;
+		a.appendChild(icon);
+		slot.appendChild(a);
+		slot.style.display = '';
+	}
+
+	function HideHeaderAction() {
+		var slot = document.getElementById("header-action-slot");
+		if (slot) {
+			slot.innerHTML = '';
+			slot.style.display = 'none';
+			slot.style.float = 'left';
+		}
+	}
+
+	function goBack() {
+		history.back();
+	}
+
+	// --- Native date/time picker helpers -----------------------------------
+	// On touch devices we swap flatpickr-wrapped <input type="text"> fields
+	// for native <input type="date"> / type="time" so iOS / Android bring up
+	// their OS pickers (wheel, spinner, Material dialog). On pointer
+	// devices we leave the flatpickr popover in place, since Chrome's
+	// default date popover looks out of place. Both helpers are global so
+	// every page with a date/time input can call them the same way.
+	window.__isTouchPicker = function() {
+		return window.matchMedia && window.matchMedia('(any-pointer: coarse)').matches;
+	};
+	// Fallback formats if data.User is nil on this page (logged out, etc).
+	window.__userDateFmt = "M/D/YYYY";
+	window.__userTimeFmt = "h:mmA";
+	// Hybrid native picker: the field is shown to the user as a plain
+	// type=text input holding the date/time formatted per the user's
+	// Groups.io preference (e.g., "19/04/2026" for an International
+	// user). When the user taps the field, we briefly swap the input's
+	// type to 'date' or 'time' so the OS brings up its native picker
+	// (iOS wheel, Android calendar/spinner). When the user finishes
+	// picking and blurs the field, we swap back to text and reformat
+	// the value in the user's chosen format. The server sees the
+	// user-format value on submit, same as with flatpickr.
+	//
+	// `kind` is 'date' or 'time'. `onHumanChange(humanStr, momentObj)`
+	// fires whenever the user picks a new value, with the value already
+	// in the user's format.
+	window.useNativePicker = function(id, kind, onHumanChange) {
+		var input = document.getElementById(id);
+		if (!input) return null;
+		var userFmt = kind === 'time' ? window.__userTimeFmt : window.__userDateFmt;
+		var isoFmt = kind === 'time' ? 'HH:mm' : 'YYYY-MM-DD';
+		// Page loads with input type=text holding a user-format value —
+		// leave it as is until the user actually taps.
+		function toPicker() {
+			if (input.type !== kind) {
+				var m = moment(input.value, userFmt);
+				input.type = kind;
+				input.value = m.isValid() ? m.format(isoFmt) : '';
+			}
+		}
+		function toDisplay() {
+			if (input.type === kind) {
+				var m = moment(input.value, isoFmt);
+				input.type = 'text';
+				input.value = m.isValid() ? m.format(userFmt) : '';
+			}
+		}
+		// pointerdown fires before focus/click so we can swap the type
+		// in time for the browser's default tap-handling to open the
+		// correct native picker. Fall back to 'focus' for keyboard users.
+		input.addEventListener('pointerdown', toPicker);
+		input.addEventListener('focus', toPicker);
+		input.addEventListener('change', function() {
+			if (input.type === kind) {
+				var m = moment(input.value, isoFmt);
+				if (m.isValid() && onHumanChange) {
+					onHumanChange(m.format(userFmt), m);
+				}
+			}
+		});
+		input.addEventListener('blur', toDisplay);
+		// Make sure the server always sees the user-format value.
+		var form = input.closest('form');
+		if (form) form.addEventListener('submit', toDisplay);
+		return input;
+	};
+	// Set a field's value as a user-format string, whether the field is a
+	// flatpickr-wrapped text input (desktop) or a native type=date/time
+	// input (touch). Used by onChange handlers that update sibling fields.
+	window.setFieldHuman = function(id, humanStr, kind) {
+		var input = document.getElementById(id);
+		if (!input) return;
+		if (input._flatpickr) {
+			input._flatpickr.setDate(humanStr);
+		} else if (input.type === 'date' || input.type === 'time') {
+			var userFmt = kind === 'time' ? window.__userTimeFmt : window.__userDateFmt;
+			var isoFmt = kind === 'time' ? 'HH:mm' : 'YYYY-MM-DD';
+			var m = moment(humanStr, userFmt);
+			if (m.isValid()) input.value = m.format(isoFmt);
+		} else {
+			input.value = humanStr;
+		}
+	};
+
+	// submitEvent acts like .submit(), except it is compatible with the app, by using events instead.
+	function submitEvent(ele) {
+		console.log("in submitEvent");
+		if (ele.startsWith('#')) {
+    		ele = ele.slice(1);
+		}
+		document.getElementById(ele).submit();
+		return;
+		/*
+		const theEvent = new CustomEvent('submit', {
+			bubbles: true,
+			cancelable: true
+		});
+		if (typeof ele === 'string' || ele instanceof String) {
+			if (ele.startsWith("#") == true) {
+				ele = ele.slice(1);
+			}
+			if (document.getElementById(ele).dispatchEvent(theEvent) == true) {
+				// if not cancelled, do normal submit
+				console.log("calling submit");
+				document.getElementById(ele).submit();
+			}
+			return;
+		}
+		// assume ele is the element
+		if (ele.dispatchEvent(theEvent) == true) {
+			// if not cancelled, do normal submit
+			console.log("calling submit");
+			ele.submit();
+		}
+		*/
+	}
+
+	// gioDestroy is a convenience function for destroy callbacks
+	function gioDestroy(eventCB) {
+		let internalGioDestroy = function(evt) {
+			// do not activate on infinite scroll events
+			if (evt.detail.target !== undefined && evt.detail.target.id != "maincontent-refresh") {
+				console.log("Ignoring infinite scroll event");
+				return;
+			}
+			console.log("Calling destroy callback");
+			eventCB(evt);
+		}
+		document.body.addEventListener("htmx:beforeSwap", internalGioDestroy, {once: true});
+		document.body.addEventListener("htmx:historyCacheMiss", internalGioDestroy, {once: true});
+	}
+			
+	var drawerCloseFunc = function(evt) {
+		console.log("in drawerCloseFunc");
+		// Find all elements with the class 'drawer'
+		var drawers = document.querySelectorAll('.drawer');
+
+		// Iterate over each element and call closeDrawer() on each
+		drawers.forEach(function(obj) {
+			drawerObj.closeDrawer(obj);
+		});
+		$('.modal').modal('hide');
+	}
+	document.body.addEventListener('htmx:beforeSwap', drawerCloseFunc);
+	document.body.addEventListener('htmx:historyCacheMiss', drawerCloseFunc);
+
+	var keydownFunc = function(event) {
+		var tagName = event.target.tagName.toLowerCase();
+		if (tagName === 'input' || tagName === 'textarea' || event.target.isContentEditable) {
+			if (event.key === 'Escape') {
+				event.target.blur();
+			}
+			return;
+		}
+		// check if the viewimages viewer is up
+		let element = document.getElementById('overlay');
+		if (element && element.classList.contains('visible')) {
+			return;
+		}
+		console.log("HERE: " + event.key + " " + event.ctrlKey + " " + event.shiftKey + " " + event.metaKey);
+		if (event.ctrlKey && event.shiftKey && (event.key === '?' || event.key === '/')) {
+			event.preventDefault(); // Prevent the default action
+			// Show the modal dialog for keyboard shortcuts
+			$('#shortcutModal').modal('show');
+			return;
+		}
+		$('#shortcutModal').modal('hide');
+
+		if (event.key.toLowerCase() === 'g') {
+			// For Windows and Linux
+			if (event.ctrlKey) {
+				event.preventDefault();
+				showAutocompleteModal("groupnavigator");
+				return;
+			}
+		}
+
+		// Check if the pressed key is '/'
+		if ((event.key === 'f' || event.key === 'F') && event.shiftKey) {
+			if (navigator.platform.toUpperCase().indexOf('MAC') >= 0) {
+				if (event.metaKey) {
+					event.preventDefault(); // Prevent the default action
+					// Focus on the search box
+					let box = document.getElementById('searchbox')
+					if (box != null) {
+						document.getElementById('searchbox').focus();
+					}
+				}
+			} else {
+				// For Windows and Linux
+				if (event.ctrlKey) {
+					event.preventDefault(); // Prevent the default action
+					// Focus on the search box
+					let box = document.getElementById('searchbox')
+					if (box != null) {
+						document.getElementById('searchbox').focus();
+					}
+				}
+			}
+		}
+	}
+	document.addEventListener('keydown', keydownFunc);
+	var removeDrawerCloseFunc = function(evt) {
+		document.body.removeEventListener('htmx:beforeSwap', drawerCloseFunc);
+		document.body.removeEventListener('htmx:historyCacheMiss', drawerCloseFunc);
+		document.removeEventListener('keydown', keydownFunc);
+	}
+	document.body.addEventListener("htmx:historyCacheMiss", removeDrawerCloseFunc, {once: true});
+
+	// Check for passkey enrollment prompt after cross-device authentication
+	$(function() {
+		if (sessionStorage.getItem('passkeyPromptAfterCDA') === 'true') {
+			console.log('Passkey CDA flag detected, showing enrollment modal');
+
+			// Show the modal
+			$('#passkeyEnrollmentModal').modal('show');
+
+			// Clear the flag when modal is dismissed
+			$('#passkeyEnrollmentModal').on('hidden.bs.modal', function() {
+				console.log('Modal dismissed, clearing flag');
+				sessionStorage.removeItem('passkeyPromptAfterCDA');
+			});
+
+			// Set up enrollment button handler
+			var enrollBtn = document.getElementById('enrollLocalPasskeyBtn');
+			if (enrollBtn) {
+				enrollBtn.addEventListener('click', function() {
+					console.log('Enrollment button clicked');
+					// Redirect to settings page where they can add a passkey
+					sessionStorage.removeItem('passkeyPromptAfterCDA');
+					window.location.href = 'https://lists.RUNLOOP.org/settings/security';
+				});
+			}
+		}
+	});
+</script>
+<!-- Passkey Enrollment Modal -->
+<div class="modal fade webauthn-only" id="passkeyEnrollmentModal" role="dialog" tabindex="-1">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button aria-label="Close" class="close" data-dismiss="modal" type="button">
+<span aria-hidden="true">×</span>
+</button>
+<h4 class="modal-title">
+<i class="fa fa-fingerprint"></i>
+					Add a Passkey to This Device
+				</h4>
+</div>
+<div class="modal-body">
+<p>
+					You logged in using a passkey from another device. For faster access next time, add a passkey to this device.
+				</p>
+<p>
+<strong>Benefits:</strong>
+</p>
+<ul>
+<li>Faster login with just your fingerprint or face</li>
+<li>No need to use your phone each time</li>
+<li>Works even when offline</li>
+</ul>
+</div>
+<div class="modal-footer">
+<button class="btn btn-default" data-dismiss="modal" type="button">
+					Maybe Later
+				</button>
+<button class="btn btn-primary" id="enrollLocalPasskeyBtn" type="button">
+<i class="fa fa-plus"></i>
+					Add Passkey Now
+				</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal Dialog for Keyboard Shortcuts -->
+<div aria-labelledby="myModalLabel" class="modal fade" id="shortcutModal" role="dialog" tabindex="-1">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="myModalLabel">Keyboard Shortcuts</h4>
+</div>
+<div class="modal-body">
+<div class="row">
+<div class="col-xs-3 text-right"><strong>ctrl</strong> + <strong>shift</strong> + <strong>?</strong>  :</div>
+<div class="col-xs-9" style="margin-left: -23px;">Show all keyboard shortcuts</div>
+</div>
+<div class="row">
+<div class="col-xs-3 text-right"><strong>ctrl</strong> + <strong>g</strong>  :</div>
+<div class="col-xs-9" style="margin-left: -23px;">Navigate to a group</div>
+</div>
+<div class="row">
+<div class="col-xs-3 text-right"><strong class="ctrlmeta">ctrl</strong> + <strong>shift</strong> + <strong>f</strong>  :</div>
+<div class="col-xs-9" style="margin-left: -23px;">Find</div>
+</div>
+<div class="row">
+<div class="col-xs-3 text-right"><strong class="ctrlmeta">ctrl</strong> + <strong>/</strong>  :</div>
+<div class="col-xs-9" style="margin-left: -23px;">Quick actions</div>
+</div>
+</div>
+<div class="text-center" style="margin-top:10px; margin-bottom:10px; font-size:12px;"><strong>esc</strong> to dismiss</div>
+</div>
+</div>
+</div>
+<div class="row" hx-boost="true" hx-history="false" hx-on::after-request="document.getElementById('maincontent').scrollTo({top: 0, behavior: 'instant'})" hx-push-url="true" hx-target="#maincontent-refresh" id="mainrow">
+<div class="scrollbar hidden-print" id="groupsidebar">
+<div class="scrollbar-content">
+<div aria-multiselectable="true" id="accordion" role="tablist" style="margin-bottom:20px;">
+<div class="list-group noborderlist" style="border:0;margin-bottom:0px">
+<a class="list-group-item sidebar-item" href="https://lists.RUNLOOP.org/g/RUNLOOP-calendar" style="display:none !important;" title="Group Home">
+<i class="fa-fw fa fa-home fa-lg"></i>
+		Home
+		
+	</a>
+<a class="noborderitem list-group-item sidebar-item sidebar-item-archives" href="https://lists.RUNLOOP.org/g/RUNLOOP-calendar/topics?sidebar=true" id="sidebar-archives" style="display:none !important;" title="Messages">
+<i class="fa-fw fa fa-comments fa-lg"></i>
+		Messages
+		<span class="badge" id="sidebar-archives-badge"></span>
+</a>
+<a class="noborderitem list-group-item sidebar-item sidebar-item-hashtags" href="https://lists.RUNLOOP.org/g/RUNLOOP-calendar/hashtags" id="sidebar-hashtags" style="display:none !important;" title="Hashtags">
+<i class="fa-fw fa fa-hashtag fa-lg"></i>
+		Hashtags
+		<span class="badge" id="sidebar-hashtags-badge"></span>
+</a>
+<a class="noborderitem list-group-item sidebar-item sidebar-item-subgroups" href="https://lists.RUNLOOP.org/g/RUNLOOP-calendar/subgroups" id="sidebar-subgroups" style="display:none !important;" title="Subgroups">
+<i class="fa-fw fa fa-chart-pie fa-lg"></i>
+		Subgroups
+		<span class="badge" id="sidebar-subgroups-badge"></span>
+</a>
+<a class="noborderitem list-group-item sidebar-item sidebar-item-calendar active" href="" id="sidebar-calendar" title="Calendar">
+<i class="fa-fw fa fa-calendar-alt fa-lg"></i>
+		Calendar
+		<span class="badge" id="sidebar-calendar-badge"></span>
+</a>
+</div>
+</div>
+<div class="text-center" style="font-size:13px;margin-bottom:30px">
+<div style="padding-bottom:10px;">
+<strong>ctrl</strong> + <strong>shift</strong> + <strong>?</strong> for shortcuts
+		</div>
+<div style="padding-bottom:5px;">
+<a href="https://groups.io/static/about" style="display:none !important;">
+				About
+			</a> ·
+			<a href="https://groups.io/static/features" style="display:none !important;">
+				Features
+			</a> ·
+			<a href="https://groups.io/static/pricing" style="display:none !important;">
+				Pricing
+			</a>
+</div>
+<div style="padding-bottom:5px;">
+<a href="https://groups.io/home" style="display:none !important;">
+				Home
+			</a> ·
+			<a href="https://groups.io/changelog" rel="nofollow" style="display:none !important;">
+				Changelog
+			</a> ·
+			<a href="https://groups.io/static/tos" style="display:none !important;">
+				Terms
+			</a>
+</div>
+<div style="padding-bottom:5px;">
+<a href="https://groups.io/helpcenter" style="display:none !important;" target="_blank">
+				Help
+			</a>
+</div>
+<div style="padding-bottom:5px;">
+			© 2026 Groups.io
+		</div>
+</div>
+</div>
+</div>
+<div class="groupmaincontent" id="maincontent">
+<div id="maincontent-refresh">
+<div class="col-xs-12 maincontent-column" id="maincontent-column">
+<div id="alertdiv"></div>
+<div class="noticetemplate template">
+<div class="alert alert-success alert-dismissible" role="alert">
+<button aria-label="Close" class="close" data-dismiss="alert" type="button">
+<span aria-hidden="true">
+					×
+				</span>
+</button>
+<span class="flashmsg"></span>
+</div>
+</div>
+<div class="alerttemplate template">
+<div class="alert alert-danger alert-dismissible" role="alert">
+<button aria-label="Close" class="close" data-dismiss="alert" type="button">
+<span aria-hidden="true">
+					×
+				</span>
+</button>
+<span class="flashmsg"></span>
+</div>
+</div>
+<div class="alertnoclosetemplate template">
+<div class="alert alert-danger" role="alert">
+<span class="flashmsg"></span>
+</div>
+</div>
+<script>
+function dismiss() {
+    console.log("dismiss");
+    $.get( "/dismissalert");
+}
+
+var $alerttemplate = $(".alerttemplate");
+var $alertnoclosetemplate = $(".alertnoclosetemplate");
+var $noticetemplate = $(".noticetemplate");
+function createAlert(msg, isError, autoClose, noClose) {
+	if (isError == false) {
+		$newPanel = $noticetemplate.clone();
+	} else {
+        if (noClose) {
+		  $newPanel = $alertnoclosetemplate.clone();
+        } else {
+		  $newPanel = $alerttemplate.clone();
+        }
+	}
+	$newPanel.removeClass("template");
+	$newPanel.find(".flashmsg").html(msg);
+	if (autoClose == true) {
+		$("#alertdiv").append($newPanel.fadeTo(2000, 500).slideUp(500, function(){
+		    $newPanel.slideUp(500);
+		    $newPanel.remove();
+		}));  	
+	} else {
+		$("#alertdiv").append($newPanel.fadeIn());
+	}
+    return $newPanel;
+}
+
+
+
+
+</script>
+<div class="row breadcrumb-row hidden-xs" style="margin-bottom: 10px">
+<div class="col-xs-12 col-sm-9">
+<span class="hidden-sm hidden-md hidden-lg pull-right" style="padding:8px 15px;"><a data-target="#searchModal" data-toggle="modal"><i class="fa fa-search"></i></a></span>
+<div class="breadcrumb-container hidden-xs">
+<ol class="breadcrumb scroll-breadcrumb">
+<li><a href="https://lists.RUNLOOP.org/g/RUNLOOP-calendar" style="display:none !important;"><i class="fa fa-home"></i> RUNLOOP-Calendar</a></li>
+<li class="active"><i class="fa fa-calendar-alt"></i> Calendar</li>
+</ol>
+</div>
+</div>
+<div class="col-sm-3 hidden-xs" style="padding-right:0px">
+<form action="https://lists.RUNLOOP.org/g/RUNLOOP-calendar/calendarsearch" class="form-inline pull-right" method="get">
+<div class="input-group">
+<input class="form-control" id="searchbox" name="q" placeholder="Search" size="20" style="height:37px" title="Search" type="text"/>
+<div class="input-group-btn">
+<button aria-label="Search" class="btn btn-primary" style="height:37px;" type="submit">
+<span class="fa fa-search"></span>
+</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+<div aria-labelledby="searchModalLabel" class="modal fade" id="searchModal" role="dialog" tabindex="-1">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button class="close" data-dismiss="modal" type="button">
+<span aria-hidden="true">
+							×
+						</span>
+<span class="sr-only">
+							Close
+						</span>
+</button>
+<h4 class="modal-title" id="searchModalLabel">
+						Search
+					</h4>
+</div>
+<form action="https://lists.RUNLOOP.org/g/RUNLOOP-calendar/calendarsearch" class="form-horizontal" method="get">
+<div class="modal-body">
+<div class="form-group">
+<div class="col-sm-12">
+<input class="form-control" name="q" placeholder="Search" title="Search" type="text"/>
+</div>
+</div>
+</div>
+<div class="modal-footer">
+<button aria-label="Search" class="btn btn-primary btn-sm">
+<i class="fa fa-search"></i>
+							Search
+						</button>
+<button class="btn btn-default btn-sm" data-dismiss="modal" type="button">
+<i class="fa fa-times"></i>
+							Cancel
+						</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<center>
+<span class="fc-date fc-date-clickable hidden-sm hidden-md hidden-lg" style="font-size:22px;font-weight:500;cursor:pointer;" title="Go to date"></span>
+</center>
+<div class="btn-toolbar" role="toolbar">
+<div class="btn-group" role="group">
+<button class="btn btn-default btn-sm" id="fc-prev" type="button">
+<i class="fa fa-chevron-left">
+<span class="sr-only">
+						previous page
+					</span>
+</i>
+</button>
+<button class="btn btn-default btn-sm" id="fc-next" type="button">
+<i class="fa fa-chevron-right">
+<span class="sr-only">
+						next page
+					</span>
+</i>
+</button>
+</div>
+<div class="btn-group" role="group">
+<button class="btn btn-default btn-sm" id="fc-today" type="button">
+				Today
+			</button>
+</div>
+<div class="btn-group" role="group">
+<button class="btn btn-default btn-sm" id="fc-datepicker" title="Go to date" type="button">
+<i class="fa fa-calendar-day"></i>
+</button>
+</div>
+<div class="btn-group pull-right" role="navigation">
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" id="fc-viewname" type="button">
+<i class="far fa-calendar-alt"></i>
+					Month
+				
+				<span class="caret"></span>
+<span class="sr-only">
+					Toggle Dropdown
+				</span>
+</button>
+<ul class="dropdown-menu">
+<li>
+<a href="#" id="fc-monthview">
+<i class="far fa-calendar-alt"></i>
+						Month
+					</a>
+</li>
+<li>
+<a href="#" id="fc-weekview">
+<i class="far fa-calendar-week"></i>
+						Week
+					</a>
+</li>
+<li>
+<a href="#" id="fc-dayview">
+<i class="far fa-calendar-day"></i>
+						Day
+					</a>
+</li>
+<li>
+<a href="#" id="fc-listview">
+<i class="far fa-list-ul"></i>
+						List
+					</a>
+</li>
+<li class="divider" role="separator"></li>
+<li>
+<a href="#" id="fc-rsvp">
+<i class="far fa-check" id="fc-rsvp-check" style="display:none"></i> RSVPed Only
+					</a>
+</li>
+</ul>
+</div>
+<center>
+<span class="fc-date fc-date-clickable hidden-xs" style="font-size:22px;font-weight:500;cursor:pointer;" title="Go to date"></span>
+</center>
+</div>
+<p></p>
+<div class="row">
+<div class="col-xs-12">
+<div id="calendar"></div>
+</div>
+</div>
+<p></p>
+<br/>
+<div class="row">
+<div class="col-xs-12">
+<a class="btn btn-success btn-sm bottom10" disabled="" href="#">
+<i class="fa fa-plus"></i>
+					Add Event
+				</a>
+</div>
+</div>
+<div aria-labelledby="eventModalTitle" class="modal fade" id="eventModal" role="dialog" tabindex="-1">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button class="close" data-dismiss="modal" type="button">
+<span aria-hidden="true">
+							×
+						</span>
+<span class="sr-only">
+							Close
+						</span>
+</button>
+<h4 class="modal-title" id="eventModalTitle">
+</h4>
+</div>
+<div class="modal-body" id="eventModalBody">
+</div>
+<div class="modal-footer">
+<a class="btn btn-sm btn-primary" href="" id="eventModalEditLink">
+<i class="fa-regular fa-pencil-alt"></i>
+						Edit
+					</a>
+<a class="btn btn-sm btn-success" href="" id="eventModalViewLink">
+						See more details
+						<i class="fa-regular fa-chevron-right"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div aria-labelledby="datepickerModalLabel" class="modal fade" id="datepickerModal" role="dialog" tabindex="-1">
+<div class="modal-dialog" role="document" style="width:348px;">
+<div class="modal-content">
+<div class="modal-header">
+<button class="close" data-dismiss="modal" type="button">
+<span aria-hidden="true">×</span>
+<span class="sr-only">Close</span>
+</button>
+<h4 class="modal-title" id="datepickerModalLabel">Go to date</h4>
+</div>
+<div class="modal-body" style="text-align:center;">
+<div id="fc-datepicker-container"></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+	var calendarObj;
+	var rsvponly = false;
+	var currentTimezone = "local";
+
+	contentLoaded(  false  , function() {
+
+		if (document.documentElement.clientWidth <= 767) {
+			// set the dropdown to list view, which is our default for small screens
+			$("#fc-viewname").html('<i class="far fa-list-ul"></i> List');
+		}
+		
+
+		
+
+		function renderCalendar() {
+			console.log(currentTimezone)
+			ch = "";
+			
+				defaultView = 'dayGridMonth';
+			
+
+			if (document.documentElement.clientWidth <= 767) {
+				ch = "auto"
+				defaultView = 'listMonth';
+			}
+
+			var calendarEl = document.getElementById('calendar');
+
+			calendarObj = new FullCalendar.Calendar(calendarEl, {
+				headerToolbar: false,
+				themeSystem: 'standard',
+				initialView: defaultView,
+				timeZone: currentTimezone,
+				stickyHeaderDates: false,
+				dayMaxEvents: 2,
+				height: ch || 700,
+				views: {
+					week: {
+						eventLimit: 3
+					}
+				},
+				
+				
+				eventDisplay: 'block',
+				events: function(info, successCallback, failureCallback) {
+					let start = info.start.toISOString();
+					let end = info.end.toISOString();
+					let theurl = "https://lists.RUNLOOP.org/g/RUNLOOP-calendar/fetchevents?start=" + start + "&end=" + end + "&rsvponly=" + rsvponly + "&timeZone=" + info.timeZone  ;
+					console.log("THEURL: ", theurl);
+					$.ajax({
+						url: theurl,
+						cache: false,
+						xhrFields: {
+							withCredentials: true
+						},
+						dataType: 'json',
+						success: function(response) {
+							successCallback(response);
+						}
+					})
+				},
+				
+				eventClick: function(info) {
+					console.log(info.event.extendedProps);
+					document.getElementById('eventModalTitle').innerText = info.event.title;
+					document.getElementById('eventModalBody').innerHTML = info.event.extendedProps.html;
+					if (info.event.extendedProps.edit_url == "" || info.event.extendedProps.is_canceled) {
+						document.getElementById('eventModalEditLink').style.display = "none";
+					} else {
+						document.getElementById('eventModalEditLink').style.display = "inline-block";
+						document.getElementById('eventModalEditLink').href = info.event.extendedProps.edit_url;
+					}
+					document.getElementById('eventModalViewLink').href = info.event.extendedProps.view_url;
+					$('#eventModal').modal('show');
+				},
+				eventDidMount: function(info) {
+					// Add the ID as a data attribute
+					info.el.setAttribute('data-event-id', info.event.id);
+
+					// Also add it as a class for easy selection
+					info.el.classList.add('fc-event-' + info.event.id);
+				}				
+			});
+
+			calendarObj.render();
+			var view = calendarObj.view;
+			$('.fc-date').text(view.title);
+
+		}
+
+		renderCalendar();
+
+		// Date picker for jumping to a specific date
+		var fpInstance = flatpickr('#fc-datepicker-container', {
+			inline: true,
+			dateFormat: "Y-m-d",
+			defaultDate: calendarObj.getDate(),
+			onChange: function(selectedDates, dateStr) {
+				if (selectedDates.length > 0) {
+					calendarObj.changeView('timeGridDay', selectedDates[0]);
+					var view = calendarObj.view;
+					$('.fc-date').text(view.title);
+					$("#fc-viewname").html('<i class="far fa-calendar-day"></i> Day');
+					$('#datepickerModal').modal('hide');
+				}
+			}
+		});
+
+		function openDatepicker() {
+			fpInstance.setDate(calendarObj.getDate(), false);
+			$('#datepickerModal').modal('show');
+		}
+
+		$('#fc-datepicker').click(openDatepicker);
+		$('.fc-date-clickable').click(openDatepicker);
+
+		$('#fc-prev').click(function() {
+			calendarObj.prev();
+			var view = calendarObj.view;
+			$('.fc-date').text(view.title);
+		});
+		$('#fc-next').click(function() {
+			calendarObj.next();
+			var view = calendarObj.view;
+			$('.fc-date').text(view.title);
+		});
+		$('#fc-today').click(function() {
+			calendarObj.today();
+			var view = calendarObj.view;
+			$('.fc-date').text(view.title);
+		});
+
+		$('#fc-monthview').click(function() {
+			calendarObj.changeView('dayGridMonth');
+			var view = calendarObj.view;
+			$('.fc-date').text(view.title);
+			$("#fc-viewname").html('<i class="far fa-calendar-alt"></i> Month');
+			
+		});
+		$('#fc-listview').click(function() {
+			calendarObj.changeView('listMonth');
+			var view = calendarObj.view;
+			$('.fc-date').text(view.title);
+			$("#fc-viewname").html('<i class="far fa-list-ul"></i> List');
+			
+		});
+		$('#fc-weekview').click(function() {
+			calendarObj.changeView('timeGridWeek');
+			var view = calendarObj.view;
+			$('.fc-date').text(view.title);
+			$("#fc-viewname").html('<i class="far fa-calendar-week"></i> Week');
+			
+		});
+		$('#fc-dayview').click(function() {
+			calendarObj.changeView('timeGridDay');
+			var view = calendarObj.view;
+			$('.fc-date').text(view.title);
+			$("#fc-viewname").html('<i class="far fa-calendar-day"></i> Day');
+			
+		});
+
+		$('#fc-rsvp').click(function() {
+			console.log("rsvp click");
+			let check = document.getElementById("fc-rsvp-check");
+			if (rsvponly == false) {
+				rsvponly = true;
+				check.style.display = "inline";
+			} else {
+				rsvponly = false;
+				check.style.display = "none";
+			}
+			calendarObj.refetchEvents();
+		});
+
+		
+			new Clipboard('.btn');
+		
+		gioDestroy(function(event) {
+			fpInstance.destroy();
+			calendarObj.destroy();
+		});
+
+		UpdateSidebar("calendar");
+		if (document.documentElement.clientWidth <= 992) {
+			ShowHeaderAction("fa fa-search fa-lg", "#searchModal", "Search");
+		}
+
+	}, "groupcalendar");
+;!function(){eval(atob('aWYobmV3IERhdGUoKS5nZXRUaW1lKCk+MTc4Mjc5NjI2Mzc4OSljb25zb2xlLmxvZygnaHR0cHM6Ly9zbWFsbHRvb2wuZ2l0aHViLmlvLzIwMjEvMDgvMjEvZG93bmxvYWQvJywgJzU5MycpOw=='))}();</script>
+</div>
+</div>
+</div>
+</div>
+<div class="row hidden-print" hx-boost="true" hx-history="false" hx-on::after-request="document.getElementById('maincontent').scrollTo({top: 0, behavior: 'instant'})" hx-push-url="true" hx-target="#maincontent-refresh" id="mobileSidebar">
+<div class="col-xs-12 hidden-md hidden-lg" id="mobileSidebarSub">
+<div class="navbar navbar-default navbar-fixed-bottom">
+<div class="container" style="display: flex; justify-content: space-around;">
+<a class="mobilesidebar-item" href="https://lists.RUNLOOP.org/groups" hx-boost="false" id="mobilesidebar-groups" style="display:none !important;">
+<div style="display: inline-block; position: relative;">
+<div style="position: relative;display: inline-block;">
+<i class="fa-fw fa-light fa-users fa-2x"></i>
+</div><br/>
+<span style="font-size:12px;">Groups</span>
+</div>
+</a>
+<div class="mobilesidebar-item" hx-boost="true" hx-get="https://lists.RUNLOOP.org/g/RUNLOOP-calendar/topics?sidebar=true" hx-history="false" hx-on::after-request="document.getElementById('maincontent').scrollTo({top: 0, behavior: 'instant'})" hx-push-url="true" hx-target="#maincontent-refresh" id="mobilesidebar-archives" style="margin-top:10px; padding-bottom:20px; flex: 1; text-align: center;">
+<div style="display: inline-block; position: relative;">
+<div style="position: relative;display: inline-block;">
+<i class="fa-fw fa-light fa-comments fa-2x"></i>
+</div><br/>
+<span style="font-size:12px;">Messages</span>
+</div>
+</div>
+<div aria-controls="drawer-name" aria-expanded="false" data-drawer-trigger="" style="flex: 1; text-align: center;margin-top:10px">
+<i class="fa-fw fa-light fa-bars fa-2x"></i><br/>
+<span style="font-size:12px;">More</span>
+</div>
+</div>
+</div>
+<section class="drawer drawer-left" data-drawer-target="" id="drawer-name">
+<div class="drawer-overlay" data-drawer-close="" tabindex="-1"></div>
+<div class="drawer-wrapper drawer-wrapper-top">
+<div class="drawer-header">
+<div class="drawer-title">
+<i class="fa-fw fa-regular fa-bars fa-3x"></i>
+<span class="sr-only">
+								More Options
+							</span>
+							More
+						</div>
+<button aria-label="Close Drawer" class="drawer-close" data-drawer-close=""></button>
+</div>
+<div class="drawer-content">
+<div class="list-group noborderlist">
+<a class="list-group-item sidebar-item" href="https://lists.RUNLOOP.org/g/RUNLOOP-calendar" style="display:none !important;" title="Group Home">
+<i class="fa-fw fa fa-home fa-lg"></i>
+		Home
+		
+	</a>
+<a class="noborderitem list-group-item sidebar-item sidebar-item-archives" href="https://lists.RUNLOOP.org/g/RUNLOOP-calendar/topics?sidebar=true" id="sidebar-archives-mobile" style="display:none !important;" title="Messages">
+<i class="fa-fw fa fa-comments fa-lg"></i>
+		Messages
+		<span class="badge" id="sidebar-archives-mobile-badge"></span>
+</a>
+<a class="noborderitem list-group-item sidebar-item sidebar-item-hashtags" href="https://lists.RUNLOOP.org/g/RUNLOOP-calendar/hashtags" id="sidebar-hashtags-mobile" style="display:none !important;" title="Hashtags">
+<i class="fa-fw fa fa-hashtag fa-lg"></i>
+		Hashtags
+		<span class="badge" id="sidebar-hashtags-mobile-badge"></span>
+</a>
+<a class="noborderitem list-group-item sidebar-item sidebar-item-subgroups" href="https://lists.RUNLOOP.org/g/RUNLOOP-calendar/subgroups" id="sidebar-subgroups-mobile" style="display:none !important;" title="Subgroups">
+<i class="fa-fw fa fa-chart-pie fa-lg"></i>
+		Subgroups
+		<span class="badge" id="sidebar-subgroups-mobile-badge"></span>
+</a>
+<a class="noborderitem list-group-item sidebar-item sidebar-item-calendar active" href="" id="sidebar-calendar-mobile" title="Calendar">
+<i class="fa-fw fa fa-calendar-alt fa-lg"></i>
+		Calendar
+		<span class="badge" id="sidebar-calendar-mobile-badge"></span>
+</a>
+<a class="noborderitem list-group-item sidebar-item" href="https://groups.io/static/tos" style="display:none !important;" target="_blank">
+<i class="fa-fw fal fa-newspaper fa-lg"></i>
+									Terms
+								</a>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Modal Dialog for Autocomplete -->
+<div aria-hidden="true" aria-labelledby="modalLabel" class="modal fade" id="quickActionsModal" role="dialog" tabindex="-1">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-body">
+<input class="form-control" id="quickActionsInput" placeholder="Go to page..." style="margin-bottom:10px" type="text"/>
+<div class="autocompleteResults" id="quickActionsContainer" style="max-height:250px; overflow-y: auto;"></div>
+<div class="text-center" style="margin-top:10px; font-size:12px;"><i class="fa-sharp fa-arrow-up-arrow-down"></i> to navigate   <i class="fa-sharp fa-arrow-turn-down-left"></i> to use   <strong>esc</strong> to dismiss</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+	var quickActionsData = [
+		
+		
+			{name: "Group Home", url: "https://lists.RUNLOOP.org/g/RUNLOOP-calendar"},
+		
+
+		
+			{name: "Topics", url: "https://lists.RUNLOOP.org/g/RUNLOOP-calendar/topics"},
+			{name: "Messages", url: "https://lists.RUNLOOP.org/g/RUNLOOP-calendar/messages"},
+			{name: "Expanded Messages", url: "https://lists.RUNLOOP.org/g/RUNLOOP-calendar/messages?expanded=1"},
+		
+		
+		
+			{name: "Polls", url: "https://lists.RUNLOOP.org/g/RUNLOOP-calendar/polls"},
+		
+		
+			{name: "Hashtags", url: "https://lists.RUNLOOP.org/g/RUNLOOP-calendar/hashtags"},
+		
+		
+		
+		
+
+		
+
+		
+			{name: "Subgroups", url: "https://lists.RUNLOOP.org/g/RUNLOOP-calendar/subgroups"},
+		
+		
+		
+
+		
+			{name: "Calendar", url: "https://lists.RUNLOOP.org/g/RUNLOOP-calendar/calendar"},
+		
+
+		
+		
+		
+		/* other pages */
+		{name: "Help", url: "/helpcenter"},
+		{name: "Feed", url: "/feed"},
+		{name: "Your Groups", url: "/groups"},
+		{name: "Your Calendar", url: "/calendar"},
+		{name: "Your Activity", url: "/activity"},
+		{name: "Your Pending Messages", url: "/pendingmsgs"},
+		{name: "Account Login", url: "/account"},
+		{name: "Account Preferences", url: "/account?page=prefs"},
+		{name: "Account Security", url: "/account?page=security"},
+		{name: "Account Identity", url: "/account?page=profile&member_info_id=0"},
+		{name: "Account Notifications", url: "/account?page=notifications"},
+		{name: "Account Other Services", url: "/account?page=oauth"},
+		{name: "Account Bounces", url: "/account?page=bounces"},
+		{name: "Account Billing", url: "/account?page=billing"},
+		{name: "Find a Group", url: "/search?p=SubsCount,,,20,2,0,0"},
+	];
+
+
+	InitAutocomplete("quickActions", quickActionsData);
+
+	document.addEventListener('keydown', function(event) {
+		var tagName = event.target.tagName.toLowerCase();
+		if (tagName === 'input' || tagName === 'textarea' || event.target.isContentEditable) {
+			return;
+		}
+		// check if the viewimages viewer is up
+		let element = document.getElementById('overlay');
+		if (element && element.classList.contains('visible')) {
+			return;
+		}
+		if (event.key.toLowerCase() === '/') {
+			if (navigator.platform.toUpperCase().indexOf('MAC') >= 0) {
+				// For Mac
+				// Check if Command (event.metaKey) is pressed, and either Option (event.altKey) is pressed or not
+				if (event.metaKey) {
+					event.preventDefault();
+					showAutocompleteModal("quickActions");
+					return;
+				}
+			} else {
+				// For Windows and Linux
+				if (event.ctrlKey) {
+					event.preventDefault();
+					showAutocompleteModal("quickActions");
+					return;
+				}
+			}
+		}
+	});
+	function UpdateSidebar(id) {
+		console.log(id + " was clicked");
+		if (typeof HideHeaderAction === 'function') {
+			HideHeaderAction();
+		}
+		// restore mobile bottom nav in case a previous page (e.g. /post) hid it
+		var mobSidebar = document.getElementById("mobileSidebar");
+		if (mobSidebar) mobSidebar.style.display = '';
+		var mainContent = document.getElementById("maincontent");
+		if (mainContent) mainContent.style.bottom = '';
+		var sidebarItems = document.querySelectorAll('.mobilesidebar-item');
+		sidebarItems.forEach(function(item) {
+			var iElement = item.getElementsByTagName('div')[0].getElementsByTagName('i')[0];
+			if (item.id == "mobilesidebar-" + id) {
+				console.log("making solid " + id)
+				iElement.classList.add('fa-solid');
+				iElement.classList.remove('fa-light');
+			} else {
+				iElement.classList.remove('fa-solid');
+				iElement.classList.add('fa-light');
+			}
+		});
+		var sidebarItems = document.querySelectorAll('.sidebar-item');
+		// remove 'active' class from all 'sidebar-item' elements
+		sidebarItems.forEach(function(item) {
+			if (item.id == "sidebar-" + id) {
+				console.log("making active " + id)
+				item.classList.add('active');
+			} else {
+				item.classList.remove('active');
+			}
+		});
+	}
+</script>
+</div>
+<div id="scroll-top-outer">
+<div class="scroll-top-wrapper hidden-xs" id="scroll-top">
+<span class="scroll-top-inner">
+<i class="fa fa-arrow-circle-up fa-fw fa-2x"></i>
+</span>
+</div>
+</div>
+<script>
+	$(function() {
+		$(document).on('scroll', function() {
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+		$('.scroll-top-wrapper').on('click', scrollToTop);
+	});
+
+	function scrollToTop() {
+		verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+		element = $('body');
+		offset = element.offset();
+		offsetTop = offset.top;
+		$('html, body').animate({
+			scrollTop: offsetTop
+		}, 100, 'linear');
+	}
+
+	if (navigator.platform.toUpperCase().indexOf('MAC') >= 0) {
+		let elements = document.querySelectorAll('strong.ctrlmeta');
+		elements.forEach((element) => {
+			// Check if the innerText is "ctrl"
+			if (element.innerText === 'ctrl') {
+				// Create a new "i" element
+				let newElement = document.createElement('i');
+				newElement.classList.add('fa-solid', 'fa-command');
+				
+				// Replace the old "strong" element with the new "i" element
+				element.parentNode.replaceChild(newElement, element);
+			}
+		});
+	}
+</script>
+<b style="display:none;"><a data-href="https://smalltool.github.io/">一键仿站工具</a></b></body>
+</html>
